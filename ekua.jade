@@ -12,8 +12,12 @@ body
 template(name='ekuaTable' )  
   h4
   +reactiveTable(collection=vehicles fields=fields)
-  input#newVehicle(type='text' placeholder='品種代碼')
-
+  
+  span 增入:
+  input#newVehicle(type='text' placeholder='品種代碼') 
+  span 餘額:
+  input#currentValue(type='number' placeholder='當前現金餘額') 
+  
   
 template(name='ekuaView')
   each vehicles
