@@ -7,21 +7,6 @@ body
     p
       | 該組合投資工具的目標是穩健盈利,而非利潤最大化.
     //+ekuaView
-    +ekuaTable
-    
-template(name='ekuaTable' )  
-  h4
-  +reactiveTable(collection=vehicles fields=fields)
-  
-  span 增入:
-  input#newVehicle(type='text' placeholder='品種代碼') 
-  span 餘額:
-  input#currentValue(type='number' placeholder='當前現金餘額') 
-  
-  
-template(name='ekuaView')
-  each vehicles
-    +vehicleView
-    
-template(name='vehicleView' )
-  h1 #{vehicle.code}
+    //+ekuaTable
+    +currentPairs
+    +status

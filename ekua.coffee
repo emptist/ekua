@@ -6,21 +6,15 @@
 
 # 設計錯誤,只需要當前組合和可能組合即可,待修改
 # 當前投資品種
-Vehicles = new Mongo.Collection 'Vehicles'
+@Vehicles = new Mongo.Collection 'Vehicles'
 # 可配對品種記錄
-Pairs = new Mongo.Collection 'Pairs'
-# 當前配對情形
-CurrentPairs = new Mongo.Collection 'CurrentPairs'
+@Pairs = new Mongo.Collection 'Pairs'
 
 getPrice = (code) ->
   code
 
 getName = (code) ->
   code
-
-CurrentPairs.helpers
-  組合數: ->
-    @組合.length
 
 Vehicles.helpers
   amount: ->
@@ -32,11 +26,6 @@ Meteor.methods
     # 先須檢查該品種是否符合要求
     # obj.candidateCode obj.targetCode
 
-  addCurrentPair: (pair) ->
-    CurrentPairs.insert pair
-
-  removePair: (名) ->
-    CurrentPairs.remove 名: 名
 
   addVehicle: (code) ->
     Vehicles.insert 代碼: code
@@ -74,9 +63,3 @@ if Meteor.isServer
     Vehicles.find {}
   Meteor.publish 'pairsChannel', (userId) ->
     Pairs.find {}
-  Meteor.publish 'currentPairsChannel', (userId) ->
-    CurrentPairs.find {}
-
-  Meteor.startup ->
-    pair = {}
-    Meteor.call 'addCurrentPair', pair unless CurrentPairs.findOne()?

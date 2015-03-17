@@ -1,0 +1,15 @@
+template(name='ekuaTable' )  
+  h4
+  +reactiveTable(collection=vehicles fields=fields showFilter=false showNavigationRowsPerPage=false showNavigation=false)
+
+  
+  span 增入:
+  input#newVehicle(type='text' placeholder='品種代碼') 
+  
+  
+template(name='ekuaView')
+  each vehicles
+    +vehicleView
+    
+template(name='vehicleView' )
+  h1 #{vehicle.code}

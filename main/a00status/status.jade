@@ -1,0 +1,3 @@
+template(name='status')
+  input#update(type="number" placeholder="{{當前餘額}}")    
+  +reactiveTable(collection=status fields=fields showFilter=false showNavigationRowsPerPage=false showNavigation=false)
