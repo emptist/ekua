@@ -1,0 +1,23 @@
+head
+  title 眾生平等投資組合
+  
+body
+  .container
+    h1 眾生平等投資組合
+    p
+      | 該組合投資工具的目標是穩健盈利,而非利潤最大化.
+    //+ekuaView
+    +ekuaTable
+    
+template(name='ekuaTable' )  
+  h4
+  +reactiveTable(collection=vehicles fields=fields)
+  input#newVehicle(type='text' placeholder='品種代碼')
+
+  
+template(name='ekuaView')
+  each vehicles
+    +vehicleView
+    
+template(name='vehicleView' )
+  h1 #{vehicle.code}
