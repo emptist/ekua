@@ -1,7 +1,7 @@
 @Status = new Mongo.Collection 'Status'
 Status.helpers
-  品種數: -> (CurrentPairs.find {}).fetch().length
-  配額: -> @當前餘額/8
+  "品種數": -> (CurrentPairs.find {}).fetch().length
+  "配額": -> @['當前餘額']/8
 
 Meteor.methods
   setStatus: (id, status) ->
