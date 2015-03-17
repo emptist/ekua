@@ -51,7 +51,7 @@ Meteor.methods
 if Meteor.isClient
   Meteor.subscribe 'currentPairsChannel'
   Template.currentPairs.helpers
-    cp: -> currentPairs.find {}
+    cp: -> CurrentPairs.find {}
     fields: ['代碼','反向','同向','高風險']
 
 
