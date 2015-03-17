@@ -7,7 +7,6 @@ CurrentPairs.helpers
 
 Meteor.methods
   addCurrentPair: (add, anti, simi, hrisk) -> # 反向,同向,兩個組合品種,可能沒有同向
-    console.log 'done'
     if (t = CurrentPairs.find 代碼: add)?
       CurrentPairs.update t._id,
         反向: anti
