@@ -7,17 +7,20 @@ CurrentPairs.helpers
 
 Meteor.methods
   addCurrentPair: (add, anti, simi, hrisk) -> # 反向,同向,兩個組合品種,可能沒有同向
+    console.log 'done'
     if (t = CurrentPairs.find 代碼: add)?
       CurrentPairs.update t._id,
         反向: anti
         同向: simi
         高風險: hrisk #高風險是指同向品種相對風險
+      console.log 'updating'
     else
       CurrentPairs.insert
         代碼: add
         反向: anti
         同向: simi
         高風險: hrisk
+      console.log 'inserting'
 
     if (s = CurrentPairs.find 代碼: simi)?
       CurrentPairs.update s._id,
@@ -60,5 +63,5 @@ if Meteor.isServer
     CurrentPairs.find {}
 
   Meteor.startup ->
-    unless CurrentPairs.findOne()?
+    unless CurrentPairs.findOne()? # 不工作?
       Meteor.call 'addCurrentPair', 150001, 159915, 159902, true
