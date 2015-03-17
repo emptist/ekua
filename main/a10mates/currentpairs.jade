@@ -1,3 +1,15 @@
 template(name='currentPairs')
   h4 當前品種
   +reactiveTable(collection=cp fields=fields showFilter=false showNavigationRowsPerPage=false showNavigation=false)
+  +addVehicle
+  
+template(name='addVehicle')  
+  input#add.stockCode(placeholder='新增品種代碼')
+  input#anti.stockCode(placeholder='反向品種代碼')
+  input#simi.stockCode(placeholder='同向品種代碼')
+  input#risk(type='checkbox' name='高風險' checked="true") 
+  span 高風險
+  input.submit(type='button' value='ok')
+    
+      
+      

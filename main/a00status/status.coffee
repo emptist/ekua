@@ -1,6 +1,6 @@
 @Status = new Mongo.Collection 'Status'
 Status.helpers
-  品種數: -> (CurrentPairs.find {}).length
+  品種數: -> (CurrentPairs.find {}).fetch().length
   配額: -> @當前餘額/8
 
 Meteor.methods
@@ -30,7 +30,6 @@ if Meteor.isServer
   Meteor.startup ->
     if (Status.find {}).fetch().length <1
       Status.insert 當前餘額: 10
-      console.log "done"
 
   Meteor.publish 'statusObj', (userId) ->
     Status.find {}

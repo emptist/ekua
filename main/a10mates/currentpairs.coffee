@@ -3,7 +3,7 @@
 
 CurrentPairs.helpers
   組合數: ->
-    @組合.length
+    (CurrentPairs.find {}).fetch().length
 
 Meteor.methods
   addCurrentPair: (add, anti, simi, hrisk) -> # 反向,同向,兩個組合品種,可能沒有同向
@@ -56,6 +56,14 @@ if Meteor.isClient
     cp: -> CurrentPairs.find {}
     fields: ['代碼','反向','同向','高風險']
 
+  Template.addVehicle.events
+    'click .submit': (e, t) ->
+      e.preventDefault()
+      Meteor.call 'addCurrentPair',
+        t.find('#add').value,
+        t.find('#anti').value,
+        t.find('#simi').value,
+        t.find('#risk').checked
 
 if Meteor.isServer
   Meteor.publish 'currentPairsChannel', (userId) ->
