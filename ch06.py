@@ -6,6 +6,8 @@
 
 # ## I added this: Mongodb testing
 # http://stackoverflow.com/questions/23300295/cant-connect-to-meteor-with-pymongo
+# 首先安裝pymongo:
+#   conda install -c https://conda.binstar.org/travis pymongo
 
 # In[62]:
 
