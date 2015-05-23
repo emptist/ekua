@@ -34,11 +34,21 @@ Meteor.methods
     Vehicles.remove 代碼: code
 
 
-
 if Meteor.isClient
   Meteor.subscribe 'vehiclesChannel'
   Meteor.subscribe 'pairsChannel'
   Meteor.subscribe 'currentPairsChannel'
+  #Meteor.subscribe 'csv'
+
+  Template.test.rendered = ->
+    $.get 'test.csv', (csv) ->
+      $('#container').highcharts
+        chart:
+          type: 'column'
+        data:
+          csv: csv
+
+      console.log csv
 
   Template.ekuaTable.helpers
     vehicles: -> Vehicles.find {}
@@ -63,3 +73,5 @@ if Meteor.isServer
     Vehicles.find {}
   Meteor.publish 'pairsChannel', (userId) ->
     Pairs.find {}
+
+  
